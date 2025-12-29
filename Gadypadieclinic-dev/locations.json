@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Vivre Langsuan",
+    "address": "2 Floor, Vivre Langsuan, 34/3 Langsuan Rd, Lumpini, Ploenchit, Bangkok, Thailand, Bangkok",
+    "details": "The clinic is open every day • Monday, Wednesday, Friday: 10:30–19:00 (Break 15:00–16:00) • Tuesday, Thursday, Saturday, Sunday: 10:00–19:00 (Break 15:00–16:00) Getting There by BTS: a. BTS Chit Lom, Exit 4 b. Walk along Langsuan Road Getting There by Car: a. Parking available inside Vivre Langsuan Note: No Q-Switch, HIFEM, Morpheus",
+    "lat": 13.7376,
+    "lng": 100.5414
+  },
+  {
+    "title": "Thonglor Marche",
+    "address": "4th Floor, Building A, Marche' Thonglor Project, 150 Thong Lo 4 Alley, Khlong Tan Nuea, Watthana, Bangkok 10110",
+    "lat": 13.7381,
+    "lng": 100.5824
+  },
+  {
+    "title": "Siamscape",
+    "address": "Siamscape Building, 2nd floor, Room SS202, Phaya Thai Rd, Pathum Wan, Bangkok 10330",
+    "details": "The clinic is open every day • Monday, Wednesday, Friday: 10:30–19:00 (Break 15:00–16:00) • Tuesday, Thursday, Saturday, Sunday: 10:00–19:00 (Break 15:00–16:00) Getting There by BTS: a. BTS Siam, Exit 1 or 2 b. Walk to Siam Square Soi 7 Getting There by Car: a. Parking inside Siamscape b. Enter via Phayathai Road Note: No Q-Switch, HIFEM, Morpheus",
+    "lat": 13.743877,
+    "lng": 100.533834
+  }
+]
+

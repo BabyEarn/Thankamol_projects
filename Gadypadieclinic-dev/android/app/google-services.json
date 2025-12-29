@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "207989987902",
+    "project_id": "gadypadieclinic-c9d35",
+    "storage_bucket": "gadypadieclinic-c9d35.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207989987902:android:fea93800a1a52fc25c4f6f",
+        "android_client_info": {
+          "package_name": "com.example.gadypadieclinic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJW-AIF0po2MlpJ7YEGgRpBcXKduXLXek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
