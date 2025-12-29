@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gpsplit-frontend-service
+  namespace: gpsplit
+spec:
+  selector:
+    app: gpsplit-frontend        # ต้องตรงกับ label ของ Pod
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gpsplit-frontend
+  namespace: gpsplit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gpsplit-frontend      # ต้องตรงกับข้างล่าง
+  template:
+    metadata:
+      labels:
+        app: gpsplit-frontend    # ตรงกับ selector + service
+    spec:
+      containers:
+        - name: gpsplit-frontend
+          image: babyearn/gps-frontend:latest   # image ที่ build/push แล้ว
+          ports:
+            - containerPort: 80

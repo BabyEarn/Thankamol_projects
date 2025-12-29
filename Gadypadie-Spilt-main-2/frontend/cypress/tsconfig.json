@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "lib": ["ES6", "DOM"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "types": ["cypress", "node"],
+    "skipLibCheck": true
+  },
+  "include": ["./e2e/**/*", "./support/**/*"]
+}

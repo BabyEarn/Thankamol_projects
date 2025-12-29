@@ -1,0 +1,49 @@
+pipeline {
+  agent any
+  environment {
+    REGISTRY = "ghcr.io/example"
+    IMAGE_BACK = "${REGISTRY}/gps-backend"
+    IMAGE_FRONT = "${REGISTRY}/gps-frontend"
+  }
+  stages {
+    stage('Checkout'){ steps { checkout scm } }
+    stage('Backend Unit'){
+      steps { sh 'chmod +x backend/mvnw && ./backend/mvnw -q -DskipTests=false test' }
+      post { always { junit 'backend/target/surefire-reports/*.xml' } }
+    }
+    stage('Frontend Unit'){
+      steps { sh 'cd frontend && npm ci && npm test -- --reporter=junit --outputFile=vitest.xml || true' }
+    }
+    stage('Build Images'){
+      steps {
+        sh 'docker build -t $IMAGE_BACK:$GIT_COMMIT backend'
+        sh 'docker build -t $IMAGE_FRONT:$GIT_COMMIT frontend'
+      }
+    }
+    stage('Integration & E2E (docker-compose)'){
+      steps {
+        sh 'docker compose up -d mysql backend'
+        sh 'sleep 20'
+        sh 'docker compose up -d frontend'
+        sh 'sleep 10'
+        sh 'cd frontend && npx cypress run'
+      }
+      post { always { sh 'docker compose down -v || true' } }
+    }
+    stage('Push Images'){
+      when { branch 'main' }
+      steps {
+        sh 'docker tag $IMAGE_BACK:$GIT_COMMIT $IMAGE_BACK:latest && docker push $IMAGE_BACK:latest || true'
+        sh 'docker tag $IMAGE_FRONT:$GIT_COMMIT $IMAGE_FRONT:latest && docker push $IMAGE_FRONT:latest || true'
+      }
+    }
+  }
+}
+
+    stage('Deploy to K8s'){
+      when { branch 'main' }
+      steps {
+        sh 'bash scripts/deploy_k8s.sh "$IMAGE_BACK:$GIT_COMMIT" "$IMAGE_FRONT:$GIT_COMMIT"'
+      }
+    }
+    
